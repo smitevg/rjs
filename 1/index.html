@@ -36,21 +36,13 @@
       }
 	  var start = new Date().getTime();
       setInterval(() => {
-        /*ReactDOM.render(
+        ReactDOM.render(
           <ExampleApplication elapsed={new Date().getTime() - start} />,
           document.getElementById('container2')
         );
 		
+
 		
-		ReactDOM.render(
-          <ExampleApplication elapsed={new Date().getTime() - start} />,
-          document.getElementById('container3')
-        );*/
-		
-		ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
 		
       }, 50);
 	
@@ -59,57 +51,6 @@
 
 
 
-
-
-/*
-      var CSSTransitionGroup = React.addons.CSSTransitionGroup;
-      var INTERVAL = 5000;
-
-      var AnimateDemo = React.createClass({
-        getInitialState: function() {
-          return {current: 0};
-        },
-
-        componentDidMount: function() {
-          this.interval = setInterval(this.tick, INTERVAL);
-        },
-
-        componentWillUnmount: function() {
-          clearInterval(this.interval);
-        },
-
-        tick: function() {
-          this.setState({current: this.state.current + 1});
-        },
-
-        render: function() {
-          var children = [];
-          var pos = 0;
-          var colors = ['red', 'gray', 'blue', 'black'];
-          for (var i = this.state.current; i < this.state.current + colors.length; i++) {
-            var style = {
-              left: pos * 150,
-              background: colors[i % colors.length]
-            };
-            pos++;
-            children.push(<div key={i} className="animateItem" style={style}>{i}</div>);
-          }
-          return (
-            <CSSTransitionGroup
-              className="animateExample"
-              transitionEnterTimeout={150}
-              transitionLeaveTimeout={250}
-              transitionName="example">
-              {children}
-            </CSSTransitionGroup>
-          );
-        }
-      });
-
-      ReactDOM.render(
-        <AnimateDemo />,
-        document.getElementById('container')
-      );*/
     </script>
 
 
