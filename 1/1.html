@@ -3,13 +3,18 @@
   <head>
     <meta charset="utf-8">
     <title>Basic Example with WebComponents</title>
-    <link rel="stylesheet" href="../shared/css/base.css" />
+    <link rel="stylesheet" href="base.css" />
   </head>
   <body>
     <h1>Basic Example with WebComponents</h1>
     <div id="container">
 
     </div>
+<br/>
+<br/>
+    <div className="code" id="c" />
+
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
@@ -18,20 +23,7 @@
 
     <script type="text/babel">
 
-      // Define WebComponent
-      var proto = Object.create(HTMLElement.prototype, {
-        attachedCallback: {
-          value: function() {
-            var mountPoint = document.createElement('span');
-            this.createShadowRoot().appendChild(mountPoint);
 
-            var name = this.getAttribute('name');
-            var url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
-            ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
-          }
-        }
-      });
-      document.registerElement('x-search', {prototype: proto});
 
       // Define React Component
       class HelloMessage extends React.Component {
@@ -40,9 +32,17 @@
         }
       }
 
+      class Cell extends React.Component {
+        render() {
+          return <div className="code" >Cell</div>
+        }
+      }
+
       // Mount React Component (which uses WebComponent which uses React)
       var container = document.getElementById('container');
+      var container2 = document.getElementById('c');
       ReactDOM.render(<HelloMessage name="Jim Sproch" />, container);
+      ReactDOM.render(<Cell name="1" />, container2);
     </script>
   </body>
 </html>
