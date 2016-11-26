@@ -12,16 +12,16 @@
     </div>
 <br/>
 <br/>
-    <div className="code" id="c" />
+    <div id="c"></div>
+	<br/><br/><br/><br/><br/><br/>1
+    <div id="c3" ></div>
 
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.21/webcomponents.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
-    <script src="react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+    <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
 
     <script type="text/babel">
+       var arrColorStyle = [ "redSt", "blueSt", "blackSt", "whiteSt" ];
 
 
 
@@ -32,17 +32,62 @@
         }
       }
 
-      class Cell extends React.Component {
+      var Component = React.createClass({	  
+	        getInitialState: function() {        
+                return {
+                    id: 0,
+					c : "redSt"
+                };
+            },
+			
+			getStyle: function (){
+			   return "style1 "+ this.state.c;
+			},
+			
+			handleUpdateState: function()  {
+                this.setState({id: this.state.id + 1});
+            },
+			
+			handleClick: function()  {			
+			    if (this.state.c == "whiteSt") {
+				   this.state.c = "blueSt";
+				}
+			    if (this.state.c == "blackSt") {
+				   this.state.c = "whiteSt";
+				}
+			    if (this.state.c == "redSt") {
+				   this.state.c = "blackSt";
+				}
+				if (this.state.c == "blueSt") {
+				   this.state.c = "redSt";
+				}
+				if (this.state.c == "whiteSt") {
+				   this.state.c = "blueSt";
+				}
+				
+                this.setState({id: this.state.id + 0});
+            },
+	  
         render() {
-          return <div className="code" >Cell</div>
+          return <div><div onClick={this.handleClick} 
+		                className={this.getStyle()}>Cell {this.state.id}</div>
+		                <button onClick={this.handleUpdateState}>
+                            Update state {this.state.c}
+                        </button>
+				 </div>		
         }
-      }
+      });
+	  
+	  
+	  
 
       // Mount React Component (which uses WebComponent which uses React)
       var container = document.getElementById('container');
       var container2 = document.getElementById('c');
+	  var container3 = document.getElementById('c3');
       ReactDOM.render(<HelloMessage name="Jim Sproch" />, container);
-      ReactDOM.render(<Cell name="1" />, container2);
+      ReactDOM.render(<Component name="1" />, container2);
+	  ReactDOM.render(<Component name="2" />, container3);
     </script>
   </body>
 </html>
