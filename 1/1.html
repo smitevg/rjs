@@ -15,12 +15,25 @@
     <div id="c"></div>
 	<br/><br/><br/><br/><br/><br/>1
     <div id="c3" ></div>
-
+	<div id="c4" ></div>
+<script src="App.jsx"></script>
     <script src="https://npmcdn.com/react@15.3.0/dist/react.js"></script>
     <script src="https://npmcdn.com/react-dom@15.3.0/dist/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
 
+	<script type="text/js">
+	
+	import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App.jsx';
+ReactDOM.render(<App/>, document.getElementById('c4'));
+	
+	</script>
+	
     <script type="text/babel">
+	
+	
+	
        var arrColorStyle = [ "redSt", "blueSt", "blackSt", "whiteSt" ];
 
 
@@ -86,8 +99,8 @@
       var container2 = document.getElementById('c');
 	  var container3 = document.getElementById('c3');
       ReactDOM.render(<HelloMessage name="Jim Sproch" />, container);
-      ReactDOM.render(<Component name="1" />, container2);
-	  ReactDOM.render(<Component name="2" />, container3);
+      ReactDOM.render(<Component  />, container2);
+	  ReactDOM.render(<Component  />, container3);
     </script>
   </body>
 </html>
