@@ -1,0 +1,436 @@
+﻿<html>
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<title>Квадкаты</title>
+	<style type="text/css">
+
+	   .block2 { 
+		    width: 80px; 
+		    height: 80px;
+		    background: #FFFFFF; 
+		    padding: 1px; 
+		    border: solid 2px #cccccc; 	    
+		    position: absolute; 
+	   }
+
+	   .subblock2 { 
+		    width: 30px; 
+		    height: 30px;
+		    background: #CCFFFF; 
+		    position: absolute;
+		    border: solid 1px #cccccc; 	    
+		    
+	   }
+
+	   .check { 
+		    width: 80px; 
+		    height: 40px;
+		    padding: 1px; 
+		    border: solid 3px black; 	    
+		    position: absolute; 
+		    visibility: hidden;
+	   }
+	   .result { 
+		    position: absolute; 
+	   }
+//float: left; 
+   
+  </style> 
+</head>
+<body>
+	Kvadrat:
+	<br><br>
+	<div id = "main">
+		  {{title}}
+			<div id='k1_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k1_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k1_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k1_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k2_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k2_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k2_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k2_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k3_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k3_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k3_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k3_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k4_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k4_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k4_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k4_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k5_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k5_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k5_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k5_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k6_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k6_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k6_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k6_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k7_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k7_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k7_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k7_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k8_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k8_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k8_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k8_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k9_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k9_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k9_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k9_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k10_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k10_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k10_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k10_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k11_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k11_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k11_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k11_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k12_1' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k12_2' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k12_3' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+			<div id='k12_4' class="block2" v-on:wheel="whl" v-on:mouseover="mouseover1" v-on:mouseout="mouseout2"></div>
+	   <span v-html="raw"></span>
+
+	   
+
+
+	   <button v-on:click="btnAct" >1</button>
+	   <button id="checkBtn" class="check" v-on:click="btnCheck">Check</button>
+	</div>
+
+
+<script>
+
+function getNameK(x, y) {
+	return 'k' + x + '_' + y;
+}
+
+function getPosX(name_k){
+	var ars = name_k.split('_');
+	var p1 = ars[0];
+	p1 = p1.replace('k','');
+	return p1;
+}
+
+function getPosY(name_k){
+	var ars = name_k.split('_');	
+	var p2 = ars[1];
+	return p2;
+}
+
+function setPos(name_k){
+	var p = document.getElementById(name_k);
+	var ars = name_k.split('_');
+	var p1 = ars[0];
+	var p2 = ars[1];
+	p.text = p2;
+	p.style.top = p2 * 95;
+	p1 = p1.replace('k','');
+	p.style.left = p1 * 105;
+}
+
+function allpos(){
+	for(var x=1; x<=12; x++){
+  		for(var y=1; y<=4;y++){
+  			setPos('k' + x + '_' + y);
+  		}
+  	}	
+}
+
+function getNext(name_k, nar) {
+	var p = document.getElementById(name_k);
+	
+	if (nar > 0) {
+		nar = 0;
+	} else {
+		nar = -2;
+	}
+
+	if (p.tag === undefined) {
+		p.tag = [];
+		p.tag.color = 0;
+		p.style.background = k.$data.color[0];
+		return;
+	}
+	
+	var cc = p.tag.color;
+	if (cc == 0) {
+		if (nar < 0) {
+            p.tag.color = 5;
+			p.style.background = k.$data.color[5];	
+		} else {
+			p.tag.color = 1;
+			p.style.background = k.$data.color[1];	
+		}
+		return;
+	}
+	if (cc == 1) {
+		p.tag.color = 2 + nar;
+		p.style.background = k.$data.color[2+ nar];	
+		return;
+	}
+	if (cc == 2) {
+		p.tag.color = 3 + nar;
+		p.style.background = k.$data.color[3 + nar];	
+		return;
+	}
+	if (cc == 3) {
+		p.tag.color = 4 + nar;
+		p.style.background = k.$data.color[4 + nar];	
+		return;
+	}
+	if (cc == 4) {
+		p.tag.color = 5 + nar;
+		p.style.background = k.$data.color[5 + nar];	
+		return;
+	}
+	if (cc == 5) {
+		if (nar < 0) {
+			p.tag.color = 4;
+			p.style.background = k.$data.color[4];	
+		} else {
+			p.tag.color = 0 ;
+			p.style.background = k.$data.color[0];	
+		}
+		return;
+	}
+	
+}
+
+function getColorNum(name_k) {
+	var p = document.getElementById(name_k);
+	var cc = p.style.background;
+	if (cc == k.$data.color[0]) {
+		return 0;
+	}
+	if (cc == k.$data.color[1]) {
+		return 1;
+	}
+	if (cc == k.$data.color[2]) {
+		return 2;
+	}
+	if (cc == k.$data.color[3]) {
+		return 3;
+	}
+	if (cc == k.$data.color[4]) {
+		return 4;
+	}
+	if (cc == k.$data.color[5]) {
+		return 5;
+	}
+	return -1;
+}
+
+function randomInteger(min, max) {
+    var rand = min - 0.5 + Math.random() * (max - min + 1)
+    rand = Math.round(rand);
+    return rand;
+}
+
+function viewCheckButton(x) {
+	var p = document.getElementById("checkBtn");
+	if (x==-1) {
+	  p.style.visibility='hidden';
+	  return;	
+	}
+	p.style.visibility='visible'
+	
+	p.style.top = 470;
+	p.style.left = x * 105;
+}
+
+/*
+
+2   4
+3   4
+4   4
+5   2
+
+*/
+
+function result(x, y) {
+	var z = [-1,-1,-1,-1]; // результат
+	var ok_color_pos = 0;
+	var ok_color = 0;
+	var used = []; //использованные элементы и масива ответов
+
+	for (var i=0; i<=3; i++) {
+		if (x[i] == y[i]){
+			//угадан цвет и место
+			ok_color_pos++;
+			used.push(i);
+		} 
+	}
+
+	for (var i=0; i<=3; i++) {
+		if (x[i] != y[i]){
+			//не угадан цвет и место
+			//цикл по ключам
+			label:
+			for (var ii=0; ii<=3;ii++) {
+				if (ii==i) {
+					continue;
+				}		
+				if (x[ii] == y[i]) {
+					for (var iii=0; iii<used.length; iii++) {
+						if (used[iii] == ii) {
+							//цвет из решения уже использован
+							continue label;
+						}
+					}
+					ok_color++;
+					used.push(ii);
+				}
+
+			}
+		} 
+	}	
+	return [ok_color_pos, ok_color];
+}
+
+
+
+var k = new Vue({
+  el: '#main',
+  data: {
+  	title: '0:0',
+  	t : 100,
+  	color :['rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 255)', 'rgb(255, 0, 255)'],
+  	key :[-1, -1, -1, -1],
+    step : 1,
+    raw : ''
+  },
+  mounted: function () {
+	  this.$nextTick(function () {
+	  	allpos();
+	  	this.key[0] = randomInteger(0,5);
+  	    this.key[1] = randomInteger(0,5);
+  	    this.key[2] = randomInteger(0,5);
+  	    this.key[3] = randomInteger(0,5);
+	  })
+  },
+
+  methods: {
+
+	whl: function(e) {
+		var x = getPosX(event.target.id);
+  		if (x != this.step) {
+  			return;
+  		}
+  		if (e.deltaY > 0) {
+			getNext(e.target.id, 1);
+		} else {
+			getNext(e.target.id, -1);
+		}
+  		
+  		for(var i=1; i<=4; i++){
+  			var cn = getColorNum('k'+x+'_'+i);
+  			if (cn == -1) {
+  				return;
+  			}
+  		}
+  		viewCheckButton(x);
+  		this.step = x;		
+	}, 
+
+  	btnAct: function (){
+  		for(var x=1; x<=12; x++){
+  			for(var y=1; y<=4;y++){
+  				setPos('k'+x+'_'+y);
+  			}
+  		}	
+
+
+  	    this.key[0] = randomInteger(0,5);
+  	    this.key[1] = randomInteger(0,5);
+  	    this.key[2] = randomInteger(0,5);
+  	    this.key[3] = randomInteger(0,5);
+  	},
+  	main_click: function(event) {
+  		var x = getPosX(event.target.id);
+  		if (x != this.step) {
+  			return;
+  		}
+  		if (e.deltaY > 0) {
+			getNext(e.target.id, 1);
+		} else {
+			getNext(e.target.id, -1);
+		}
+  		
+  		for(var i=1; i<=4; i++){
+  			var cn = getColorNum('k'+x+'_'+i);
+  			if (cn == -1) {
+  				return;
+  			}
+  		}
+  		viewCheckButton(x);
+  		this.step = x;
+  		//event.target.style.background = this.color[getPosY(event.target.id)-1];
+  	},
+
+  	mouseover1: function(event) {
+  		var x = getPosX(event.target.id);
+  		for(var i=1; i<=4; i++) {
+  			var e = document.getElementById('k'+x+'_'+i);
+  			e.style.border = 'solid 2px black';
+  		}
+
+  	},
+  	mouseout2:function(event) {
+		var x = getPosX(event.target.id);
+  		for(var i=1; i<=4; i++) {
+  			var e = document.getElementById('k'+x+'_'+i);
+  			e.style.border = 'solid 2px #cccccc';
+  		}  		
+  	},
+
+  	btnCheck:function(event) {
+      viewCheckButton(-1);
+      y = [getColorNum(getNameK(this.step, 1)), getColorNum(getNameK(this.step, 2)), getColorNum(getNameK(this.step, 3)), getColorNum(getNameK(this.step, 4))];
+      r = result(this.key, y);
+
+      var cr = ['rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)'];
+      if (r[0] > 0) {
+      	cr[0] = this.color[1];      	
+      } else {
+      	if (r[1] > 0) {
+      	  cr[0] = this.color[0];      		
+      	}
+      }
+
+      if (r[0] > 1) {
+      	cr[1] = this.color[1];      	
+      } else {
+      	if (r[0] + r[1] > 1) {
+      	  cr[1] = this.color[0];      		
+      	}
+      }
+
+      if (r[0] > 2) {
+      	cr[2] = this.color[1];      	
+      } else {
+      	if (r[0] + r[1] > 2) {
+      	  cr[2] = this.color[0];      		
+      	}
+      }
+
+	  if (r[0] > 3) {
+      	cr[3] = this.color[1];      	
+      } else {
+      	if (r[0] + r[1] > 3) {
+      	  cr[3] = this.color[0];      		
+      	}
+      }
+
+      this.raw =  this.raw + '<div class="block2" style="left: ' + this.step * 105 + 'px; top: 500px">  <div class="subblock2" style="left: 5px; top: 5px; background:'+cr[0]+'"></div>   <div class="subblock2" style="left: 45px; top: 5px; background:'+cr[1]+'"></div>  <div class="subblock2" style="left: 5px; top:45px; background:'+cr[2]+'"></div>    <div class="subblock2" style="left: 45px; top:45px; background:'+cr[3]+'"></div>  </div>';
+      this.step++;
+  	}
+  }
+});
+
+
+</script>
+
+</body>
+</html>
