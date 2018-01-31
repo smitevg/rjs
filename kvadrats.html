@@ -96,11 +96,21 @@
 
 
 	   <button v-on:click="btnAct" >1</button>
+	   <button v-on:click="countVar" >count</button>
 	   <button id="checkBtn" class="check" v-on:click="btnCheck">Check</button>
 	</div>
 
 
 <script>
+
+function arraysEqual(a, b) {
+  
+  for (var i = 0; i < 2; ++i) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
 
 function getNameK(x, y) {
 	return 'k' + x + '_' + y;
@@ -299,6 +309,7 @@ var k = new Vue({
   	color :['rgb(0, 0, 255)', 'rgb(255, 0, 0)', 'rgb(0, 255, 0)', 'rgb(255, 255, 0)', 'rgb(0, 255, 255)', 'rgb(255, 0, 255)'],
   	key :[-1, -1, -1, -1],
     step : 1,
+    stepResult : [],
     raw : ''
   },
   mounted: function () {
@@ -385,12 +396,60 @@ var k = new Vue({
   		}  		
   	},
 
+
+    //подсчет количества вариантов
+  	countVar:function(){
+        
+		//1. взять вариант
+		//2. взять решение
+		//3. прогнать порешению
+		//4. сравнить результат
+		let count = 0;        
+
+        for (let rrr1=0; rrr1<=5; rrr1++){
+		  for (let rrr2=0; rrr2<=5; rrr2++){
+            for (let rrr3=0; rrr3<=5; rrr3++){
+              for (let rrr4=0; rrr4<=5; rrr4++){
+        	     //Вариант [rrr1, rrr2, rrr3, rrr4]		
+        	     var isOk = 1;
+        	     for(let st=1; st <=12; st++){
+        	       let stepR = this.stepResult[st];
+        	       //шаги
+        	       if (stepR === undefined) { }
+        	       else {  
+        	         let g = [getColorNum(getNameK(st, 1)), getColorNum(getNameK(st, 2)), getColorNum(getNameK(st, 3)), getColorNum( getNameK(st, 4))]; 
+        	         let r4r = [rrr1, rrr2, rrr3, rrr4];       	       	 
+        	       	 let r = result(g, r4r);
+        	       	 if (arraysEqual(r, stepR)) {
+        	       	 	//alert('bingo');
+        	       	 	
+        	       	 } else {
+        	       	 	isOk = 0; // неудача
+        	       	 }
+        	       }
+        	     }// Вариант 
+
+        	     if (isOk == 1) {
+        	       count++;
+        	 	 }
+              }	
+            }	
+          }        	
+        }
+
+        alert (count);
+  		
+  	},
+
+
   	btnCheck:function(event) {
       viewCheckButton(-1);
-      y = [getColorNum(getNameK(this.step, 1)), getColorNum(getNameK(this.step, 2)), getColorNum(getNameK(this.step, 3)), getColorNum(getNameK(this.step, 4))];
-      r = result(this.key, y);
+      let y = [getColorNum(getNameK(this.step, 1)), getColorNum(getNameK(this.step, 2)), getColorNum(getNameK(this.step, 3)), getColorNum(getNameK(this.step, 4))];      
 
-      var cr = ['rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)'];
+	  let r = result(this.key, y);
+      this.stepResult[this.step] = r; // запомним в массиве результатов
+
+      let cr = ['rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)','rgb(230, 230, 230)'];
       if (r[0] > 0) {
       	cr[0] = this.color[1];      	
       } else {
@@ -423,7 +482,8 @@ var k = new Vue({
       	}
       }
 
-      this.raw =  this.raw + '<div class="block2" style="left: ' + this.step * 105 + 'px; top: 500px">  <div class="subblock2" style="left: 5px; top: 5px; background:'+cr[0]+'"></div>   <div class="subblock2" style="left: 45px; top: 5px; background:'+cr[1]+'"></div>  <div class="subblock2" style="left: 5px; top:45px; background:'+cr[2]+'"></div>    <div class="subblock2" style="left: 45px; top:45px; background:'+cr[3]+'"></div>  </div>';
+      //  id="r_1_1"
+      this.raw =  this.raw + '<div id="r_'+this.step+'_1" class="block2" style="left: ' + this.step * 105 + 'px; top: 500px">  <div id="r_'+this.step+'_2" class="subblock2" style="left: 5px; top: 5px; background:'+cr[0]+'"></div>   <div id="r_'+this.step+'_3" class="subblock2" style="left: 45px; top: 5px; background:'+cr[1]+'"></div>  <div id="r_'+this.step+'_4" class="subblock2" style="left: 5px; top:45px; background:'+cr[2]+'"></div>    <div class="subblock2" style="left: 45px; top:45px; background:'+cr[3]+'"></div>  </div>';
       this.step++;
   	}
   }
